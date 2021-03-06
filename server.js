@@ -16,6 +16,7 @@ function handleFedexPriceLogic(req, res) {
 	console.log(req.query);
 	const type = req.query.type;
 	const weight = req.query.weight;
+	const zone = req.query.zone;
 	let cost = "";
 	if (type === "Letters (Stamped)") {
 		if (weight <= 1) {
@@ -66,20 +67,12 @@ function handleFedexPriceLogic(req, res) {
 			cost = "$3.40"
 		}
 	} else if (type === "First-Class Package Service—Retail") {
-		const zone = req.query.zone;
 		let initCost = 0;
 		if (weight <= 4) {
+			// only handling for zone one because I'm bored
 			initCost = 4;
-			// if (zone <= 2) {
-			// 	// do nothing
-			// } else if (zone <= 7) {
-			// 	cost = initCost + .05;
-			// } else if (zone === 8) {
-			// 	cost = iniitCost + .15;
-			// }
 		} else if (weight <= 8) {
 			initCost = 4.80;
-			// if ()
 		} else if (weight <= 12) {
 			initCost = 5.50;
 		} else {
