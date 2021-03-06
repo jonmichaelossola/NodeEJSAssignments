@@ -8,13 +8,11 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 app.get("/", function (req, res) {
-	res.write("Please");
-	res.end();
+	res.render("index");
 });
 
 app.get("/home", function(req, res) {
 	// Controller
-	console.log("Received a request for the home page");
 	var name = "John";
 	var emailAddress = "john@email.com";
 
