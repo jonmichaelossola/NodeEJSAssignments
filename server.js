@@ -7,6 +7,11 @@ app.use(express.static("public"));
 app.set("views", "views");
 app.set("view engine", "ejs");
 
+app.get("/", function (req, res) {
+	res.write("Please");
+	res.end();
+});
+
 app.get("/home", function(req, res) {
 	// Controller
 	console.log("Received a request for the home page");
