@@ -33,7 +33,7 @@ app.get("/getPerson", (req, res) => {
 	    // Log this to the console for debugging purposes.
 	    console.log("Back from DB with result:");
 	    console.log(result.rows);
-
+	    res.write(result.rows);
 
 	}); 
 })
