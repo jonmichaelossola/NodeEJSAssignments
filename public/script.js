@@ -9,5 +9,14 @@ function onFriendTextInput(e) {
     .then(users => {
       console.log(users);
       let chatBox = document.querySelector(".friendFinderDropdown");
+      chatBox.innerHTML = "";
+      users.forEach(user => {
+        let str = `<div class="ChatWithMeBox">
+          <span data-id="${user.id}" data-username="${
+          user.username
+        }">${user.first_name + " " + user.last_name}</span>
+        </div>`;
+        chatBox.innerHTML += str;
+      });
     });
 }

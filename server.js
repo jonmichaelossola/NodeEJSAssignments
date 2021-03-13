@@ -47,7 +47,7 @@ app.get("/getChatMates", (req, res) => {
       res.status(400).send(err);
     }
     client.query(
-      `SELECT * FROM users WHERE id!=${userId} AND username ILIKE '%${input}%' OR first_name ILIKE '%${input}%' OR last_name ILIKE '%${input}%'`,
+      `SELECT username, id, first_name, last_name FROM users WHERE id!=${userId} AND username ILIKE '%${input}%' OR first_name ILIKE '%${input}%' OR last_name ILIKE '%${input}%'`,
       function(err, result) {
         done();
         if (err) {
