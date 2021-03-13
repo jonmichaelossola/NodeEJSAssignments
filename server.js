@@ -42,7 +42,7 @@ app.get("/getChatMates", (req, res) => {
   const userId = req.query.id;
   pool.connect((err, client, done) => {
     if (err) {
-      console.log(err);
+      console.log("ERROR", err);
       res.status(400).send(err);
     }
     client.query(`SELECT * FROM users WHERE id!=${userId}`, function(
