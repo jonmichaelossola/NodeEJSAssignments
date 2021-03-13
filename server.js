@@ -40,24 +40,25 @@ app.get("/getPerson", (req, res) => {
 
 app.get("/getChatMates", (req, res) => {
   const userId = req.query.id;
+  const input = req.query.input;
   pool.connect((err, client, done) => {
     if (err) {
       console.log("ERROR", err);
       res.status(400).send(err);
     }
-    client.query(`SELECT * FROM users WHERE id!=${userId}`, function(
-      err,
-      result
-    ) {
-      done();
-      if (err) {
-        console.log("Error in query: ");
-        console.log(err);
-        return;
-      }
+    client.query(
+      `SELECT * FROM users WHERE id!=${userId} AND username ILIKE '%${input}%' OR first_name ILIKE '%${input}%' OR last_name ILIKE '%${input}%'`,
+      function(err, result) {
+        done();
+        if (err) {
+          console.log("Error in query: ");
+          console.log(err);
+          return;
+        }
 
-      res.end(JSON.stringify(result.rows));
-    });
+        res.end(JSON.stringify(result.rows));
+      }
+    );
   });
 });
 
