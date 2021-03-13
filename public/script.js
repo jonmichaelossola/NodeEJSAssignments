@@ -22,6 +22,6 @@ function onFriendTextInput(e) {
     });
 }
 
-function startChatWith() {
+function startChat() {
   console.log("hello world test");
 }
