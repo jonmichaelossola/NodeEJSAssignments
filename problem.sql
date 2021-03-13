@@ -10,3 +10,11 @@ CREATE TABLE family (
 	parentTwo int references people(id),
 	child int references people(id)
 );
+
+CREATE TABLE users (
+	id serial PRIMARY KEY,
+	username varchar,
+	passwd varchar,
+	first_name varchar,
+	last_name varchar
+);
